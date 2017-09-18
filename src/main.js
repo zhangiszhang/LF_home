@@ -7,9 +7,10 @@ import router from './router'
 Vue.config.productionTip = false
 import $ from 'jquery'
 import "less-loader"
-import Header from "./components/publik/Header"
-import Nav from "./components/publik/Nav"
-import Footer from "./components/publik/Footer"
+import Header from "./components/public/Header"
+import Nav from "./components/public/Nav"
+import Footer from "./components/public/Footer"
+import Content from "./components/public/Content"
 import { Loadmore } from 'mint-ui';
 import { Lazyload } from 'mint-ui';
 
@@ -29,6 +30,7 @@ Vue.component(SwipeItem.name, SwipeItem);
 Vue.component("v-header",Header)
 Vue.component("v-nav",Nav)
 Vue.component("v-footer",Footer)
+Vue.component("v-content",Content)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
