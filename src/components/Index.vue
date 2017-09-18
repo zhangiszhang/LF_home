@@ -1,7 +1,7 @@
 <template>
         <div>
             <v-header titel="" style={}>
-                <a hreaf="javascript:;" slot="left" ></a>
+                <a hreaf="javascript:;" slot="left" >000</a>
                 <a hreaf="javascript:;" slot="right" class="iconfont icon-sousuo-liebiao"></a>
             </v-header>
             <v-nav>
