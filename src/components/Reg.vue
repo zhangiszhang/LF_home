@@ -23,7 +23,7 @@
               </span>
 			</p>
 			<button class="btn_reg" @click="btnreg">注册</button>
-			<button class="btn_gin">登录</button>
+			<button class="btn_gin" @click="btnsig">登录</button>
 			<h4>
 				如有问题请
 				<a>联系客服</a>
@@ -83,7 +83,7 @@
 				 if(arr[0]==true && arr[1] == true){
 				 	ls = "注册成功即将跳转"
 				 	setTimeout(()=>{
-				 		this.$router.push("/index")
+				 		this.$router.push("/sign")
 				 	},3000)
 				 	var obj = {
 				 		type:"user",
@@ -96,6 +96,9 @@
 				 	localStorage.setItem("user",JSON.stringify(obj))
 				 }
 				 Toast(ls)
+			},
+			btnsig(){
+				this.$router.push("/sign")
 			}
 		}
 	}

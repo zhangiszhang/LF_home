@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Idle from "@/components/Idle"
 import List from '@/components/List'
+import Sig from '@/components/Sign'
 import Channelsub from '@/components/Channelsub'
 import Reg from '@/components/Reg'
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/reg',
       name: 'reg',
       component: Reg
+    },
+    {
+      path: '/sign',
+      name: 'sign',
+      component: Sig
     },
     {
       path: '/channelsub/:num/:pid/',
