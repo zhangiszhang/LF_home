@@ -41,7 +41,7 @@
 					{
 						ic:"icon-geren",
 						name:"用户中心",
-						path:"/fen"
+						path:"/reg"
 					}
 				],
 				timer:null
