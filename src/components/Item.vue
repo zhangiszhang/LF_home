@@ -192,6 +192,7 @@
                     </div>
                 </div>
 			</div>
+            <button @click="car" style="height:500px; width:100px;">点我</button>
 		</v-content>
 </div>
 </template>
@@ -207,7 +208,8 @@
                         ActivityPrice:"",
                         SalePrice:"",
                         ActivityTag:"",
-                        CommentCount:""
+                        CommentCount:"",
+                        Id:""
                     }
                 },
                 banner:[],
@@ -232,6 +234,18 @@
                 // console.log(this.groupAttrs)
                 // console.log(res.data)             
             }).catch(err=>console.log(err))
+        },
+        methods:{
+            car(){
+                 var obj = {
+                id:this.$route.params.pid,
+                name:this.goods.InnerData.Name,
+                pric:this.goods.InnerData.ActivityPrice,
+                num:1
+            }
+             this.$store.commit("getData",obj)
+             console.log(this.$store.state.arr)
+            }
         }
     }
 </script>

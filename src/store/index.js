@@ -5,28 +5,33 @@ Vue.use(Vuex) //需要vue.use
 
 const store =new Vuex.Store({
   		 state :{
-  		 	arr:[
-  		 	{
-  		 		id:1,
-  		 		name:"你好不好",
-  		 		pric:100,
-  		 		num:1
-  		 	},
-  		 	{
-  		 		id:2,
-  		 		name:"我好不好",
-  		 		pric:200,
-  		 		num:2
-  		 	},
-  		 	{
-  		 		id:3,
-  		 		name:"他好不好",
-  		 		pric:300,
-  		 		num:3
-  		 	}
-  		 	]
+  		 	arr:[			   ]
   		 },
   		 mutations:{ 
+			   getData(state,obj){
+				   //console.log(obj)
+				   if(state.arr.length == 0){
+					   state.arr.push(obj)
+				   }else{
+					var isT = true
+					//console.log(state)
+					for(var i in state.arr){
+						if(state.arr[i].id == obj.id){
+							state.arr[i].num +=Number(obj.num)
+							//console.log("相同")
+							isT = false 
+							break;
+						}else{
+							isT = true
+						}
+					}
+					if(isT){
+						state.arr.push(obj)
+						//console.log("不同")
+					}
+	   
+				   }
+			   },
   		 	//增加
   		 	zengpric(state,index){
   		 		state.arr.map((ele,i)=>{

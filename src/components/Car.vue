@@ -19,7 +19,7 @@
 						<li v-for="(ele,index) in goodsarr " :key="index" :data-goodid="ele.id">
 							<section class="se1">√</section>
 							<section class="se2">
-								<img src="../assets/fonts/oneisoen.jpg" />
+								<img src="" />
 							</section>
 							<section class="se3">
 								<p>{{ele.name}}</p>
