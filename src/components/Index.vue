@@ -1,8 +1,8 @@
 <template>
         <div>
-            <v-header titel="" style={}>
+            <v-header titel="首页" style={}>
                 <a hreaf="javascript:;" slot="left" ></a>
-                <a hreaf="javascript:;" slot="right" class="iconfont icon-sousuo-liebiao"></a>
+                <router-link to="/list" slot="right" class="iconfont icon-sousuo-liebiao"></router-link>
             </v-header>
             <v-nav>
             </v-nav>
@@ -115,7 +115,7 @@
 						this.imgarr.push(index.InnerData.ImageUrl)
 					}
 				})
-			})
+			}) 
 	}
 }</script>
 

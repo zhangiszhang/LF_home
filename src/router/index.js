@@ -6,6 +6,7 @@ import List from '@/components/List'
 import Sig from '@/components/Sign'
 import Channelsub from '@/components/Channelsub'
 import Reg from '@/components/Reg'
+import Car from '@/components/Car'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/channelsub/:num/:pid/',
       name: 'Channelsub',
       component: Channelsub
+    },
+    {
+      path: '/car',
+      name: 'car',
+      component: Car
     }
   ]
 })

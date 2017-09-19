@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "jquery": "^2.2.3",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "mint-ui": "^2.2.9",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
-    "jquery" : "^2.2.3"
+    "vuex": "^2.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -15,7 +15,7 @@ import { Loadmore } from 'mint-ui';
 import { Lazyload } from 'mint-ui';
 import { Field } from 'mint-ui';
 import { Button } from 'mint-ui';
-
+import store from "./store"
 
 
 
@@ -30,8 +30,7 @@ Vue.prototype.$http = axios
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
-
-
+ 
 //头部,底部公共组件注册
 Vue.component("v-header",Header)
 Vue.component("v-nav",Nav)
@@ -41,6 +40,7 @@ Vue.component("v-content",Content)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
