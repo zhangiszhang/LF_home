@@ -13,19 +13,24 @@ import Footer from "./components/public/Footer"
 import Content from "./components/public/Content"
 import { Loadmore } from 'mint-ui';
 import { Lazyload } from 'mint-ui';
+import { Field } from 'mint-ui';
+import { Button } from 'mint-ui';
+import store from "./store"
+
+
 
 
 import { Swipe, SwipeItem } from 'mint-ui';
 import axios from "axios"
-
+Vue.component(Button.name, Button);
+Vue.component(Field.name, Field);
 Vue.use(Lazyload);
 Vue.component(Loadmore.name, Loadmore);
 Vue.prototype.$http = axios
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
-
-
+ 
 //头部,底部公共组件注册
 Vue.component("v-header",Header)
 Vue.component("v-nav",Nav)
@@ -35,6 +40,7 @@ Vue.component("v-content",Content)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

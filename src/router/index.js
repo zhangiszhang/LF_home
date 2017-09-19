@@ -3,8 +3,14 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Idle from "@/components/Idle"
 import List from '@/components/List'
+import Sig from '@/components/Sign'
 import Channelsub from '@/components/Channelsub'
+<<<<<<< HEAD
 import Item from '@/components/Item'
+=======
+import Reg from '@/components/Reg'
+import Car from '@/components/Car'
+>>>>>>> 4158bd5d31174dc4c5761e6bc33319207e6ececb
 
 Vue.use(Router)
 
@@ -35,6 +41,26 @@ export default new Router({
       path: '/item/:pid',
       name: 'Item',
       component: Item
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: Reg
+    },
+    {
+      path: '/sign',
+      name: 'sign',
+      component: Sig
+    },
+    {
+      path: '/channelsub/:num/:pid/',
+      name: 'Channelsub',
+      component: Channelsub
+    },
+    {
+      path: '/car',
+      name: 'car',
+      component: Car
     }
   ]
 })

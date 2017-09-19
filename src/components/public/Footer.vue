@@ -9,6 +9,7 @@
 		<div class="index_btn_stop" @click="sc_top">
 			^
 		</div>
+		<span class="num_footer"id="footer_num" ref="num"></span>
 	</div>
 </template>
 
@@ -36,12 +37,12 @@
 					{
 						ic:"icon-gouwuche",
 						name:"购物车",
-						path:"/fen"
+						path:"/car"
 					},
 					{
 						ic:"icon-geren",
 						name:"用户中心",
-						path:"/fen"
+						path:"/reg"
 					}
 				],
 				timer:null
@@ -50,6 +51,14 @@
 		methods:{
 			sc_top(){
 				document.body.scrollTop=0; 
+			}
+		},
+		mounted(){
+			if(this.$store.state.arr.length>0){
+				this.$refs.num.innerHTML=this.$store.state.arr.length
+				this.$refs.num.style.display = "block"
+			}else{
+				this.$refs.num.style.display = "none"
 			}
 		}
 	}
@@ -104,5 +113,20 @@
 		text-align: center;
 		line-height: 0.6rem;
 		font-size: 0.4rem;
+	}
+	.num_footer{
+		position: absolute;
+		bottom: 60%;
+		right: 22%;
+		display: block;
+		width: 0.3rem;
+		height: 0.3rem;
+		border: 1px solid goldenrod;
+		text-align: center;
+		line-height: 0.3rem;
+		font-size: 0.2rem;
+		border-radius: 50%;
+		background: goldenrod;
+		color: white;
 	}
 </style>

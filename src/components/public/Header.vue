@@ -1,7 +1,7 @@
 <template>
         <div class="Home-Header" id="Home-Header">
             <slot name="left"></slot>
-            <p>{{titel}}</p>
+            <p >{{titel}}</p>
             <slot name="right"></slot>
         </div>
 </template>
