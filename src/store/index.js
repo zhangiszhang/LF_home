@@ -6,24 +6,24 @@ Vue.use(Vuex) //需要vue.use
 const store =new Vuex.Store({
   		 state :{
   		 	arr:[
-  		 	{
-  		 		id:1,
-  		 		name:"你好不好",
-  		 		pric:100,
-  		 		num:1
-  		 	},
-  		 	{
-  		 		id:2,
-  		 		name:"我好不好",
-  		 		pric:200,
-  		 		num:2
-  		 	},
-  		 	{
-  		 		id:3,
-  		 		name:"他好不好",
-  		 		pric:300,
-  		 		num:3
-  		 	}
+		 	{
+		 		id:1,
+		 		name:"你好不好",
+		 		pric:100,
+		 		num:1
+		 	},
+		 	{
+		 		id:2,
+		 		name:"我好不好",
+		 		pric:200,
+		 		num:2
+		 	},
+		 	{
+		 		id:3,
+		 		name:"他好不好",
+		 		pric:300,
+		 		num:3
+		 	}
   		 	]
   		 },
   		 mutations:{ 

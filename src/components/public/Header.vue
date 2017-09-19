@@ -18,7 +18,7 @@
     }
 </script>
 <style lang="less">
-    .Home-Header{
+    #Home-Header{
     	position: fixed;
     	top: 0;
     	left: 0;

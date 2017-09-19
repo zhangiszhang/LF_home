@@ -235,7 +235,7 @@
         }
     }
 </script>
-<style >
+<style scoped="scoped">
 .clearfix {
     overflow: hidden;
 }

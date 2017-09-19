@@ -4,13 +4,10 @@ import Index from '@/components/Index'
 import Idle from "@/components/Idle"
 import List from '@/components/List'
 import Sig from '@/components/Sign'
-import Channelsub from '@/components/Channelsub'
-<<<<<<< HEAD
-import Item from '@/components/Item'
-=======
+import Channelsub from '@/components/Channelsub' 
+import Item from '@/components/Item' 
 import Reg from '@/components/Reg'
-import Car from '@/components/Car'
->>>>>>> 4158bd5d31174dc4c5761e6bc33319207e6ececb
+import Car from '@/components/Car' 
 
 Vue.use(Router)
 
