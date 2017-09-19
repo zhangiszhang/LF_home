@@ -12,10 +12,10 @@
                                <dl  class="life-goodsMark">{{ele.Name}}</dl>
                             </div>
                             <ul  class="life-goodsUl onlyStyle">
-                               <li class=""  v-for="(ele,index) in listData[index].Children" :data-id="ele.ItemIndexId">
-                                    <router-link :to="'/channelsub/'+ele.ItemIndexId">
-                                    <img  :src="'http://i.lifevccdn.com'+ele.Icon" > 
-                                    <dl >{{ele.Name}}</dl>
+                               <li class="item"  v-for="(ele2,index) in listData[index].Children" :data-id="ele.ItemIndexId">
+                                    <router-link :to="'/channelsub/'+ele.ItemIndexId+'/'+ele2.ItemIndexId">
+                                    <img  :src="'http://i.lifevccdn.com'+ele2.Icon" > 
+                                    <dl >{{ele2.Name}}</dl>
                                     </router-link>
                                </li>
                                
@@ -42,17 +42,18 @@
         mounted(){
             this.$http.get("http://app.lifevc.com/1.0/v_h5_5.1.2_33/categories/allCategory?o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true")
             .then(res=>{
-               console.log(res.data)
-                this.listData = res.data.InnerData
-                console.log(this.listData)
+                this.listData = res.data.InnerData             
             }).catch(err=>console.log(err))
         }
     }
 </script>
-<style scoped>
+<style >
 #Home-Header {
 		background-image: none;
 	}
+body{
+    background-color:#f2f2f2;
+}
 #content-warp{
     position: absolute;
     width: 100%;
@@ -61,6 +62,9 @@
 }
 .life-module {
     overflow: hidden;
+}
+.life-goodsAll{
+    padding-bottom:80px;
 }
 .goodsBox {
     margin-top: 0.5rem;
@@ -76,7 +80,7 @@
     font-size: 0.3rem;
 }
 .life-goodsTip .life-goodsMark {
-    font-size: 0.26rem;
+    font-size: 0.3rem;
     letter-spacing: 0.2rem;
     position: relative;
 }
@@ -98,7 +102,7 @@
     float: left;
     width: 33%;
     text-align: center;
-    border: 2px solid #f1f1f1;
+    border: 1px solid #f1f1f1;
     margin: 0 0 -1px -1px;
 }
 .onlyStyle li img {

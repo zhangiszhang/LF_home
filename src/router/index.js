@@ -4,6 +4,7 @@ import Index from '@/components/Index'
 import Idle from "@/components/Idle"
 import List from '@/components/List'
 import Channelsub from '@/components/Channelsub'
+import Item from '@/components/Item'
 
 Vue.use(Router)
 
@@ -25,9 +26,15 @@ export default new Router({
       component: List
     },
     {
-      path: '/channelsub/:pid',
+      path: '/channelsub/:num/:pid',
       name: 'Channelsub',
       component: Channelsub
+    
+    },
+    {
+      path: '/item/:pid',
+      name: 'Item',
+      component: Item
     }
   ]
 })

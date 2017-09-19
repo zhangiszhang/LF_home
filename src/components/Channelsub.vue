@@ -1,19 +1,20 @@
 <template>
 <div>
-    <v-header title="家务"></v-header>
+    <v-header titel="家务"></v-header>
     <v-content id="content">
         <div class="wrap-shelf-navs">
-        <ul data-v-2221d056="" class="life-sort clearFix">
-             <li data-v-2221d056=""><a data-v-2221d056="" class="">新品</a></li> 
-             <li data-v-2221d056=""><a data-v-2221d056="" class="">畅销</a></li> 
-             <li data-v-2221d056=""><a data-v-2221d056="" class="">
-                <em data-v-2221d056="">价格</em> 
-                <i data-v-2221d056="" class=""></i></a>
+        <ul  class="life-sort clearFix">
+             <li ><a  class="" @click="newGoods">新品</a></li> 
+             <li ><a  class="" @click="salesGoods">畅销</a></li> 
+             <li ><a  class="" @click="priceGoods">
+                <em >价格</em> 
+                <i  class=""></i></a>
              </li>
         </ul>
         </div>
         <div class="wrap-shelf">
              <div  class="shelf-item" v-for="(ele,index) in channerl">
+                <router-link :to="'/item/'+ele.ItemInfoId">
                 <a  class="item-pic-bx">
                     <img  class="item-pic" :src="'http://i.lifevccdn.com'+ele.ImageUrl">
                     <div class="item-status-empty" style="display: none;">
@@ -24,7 +25,7 @@
                     {{ele.Name}}
                 </div> 
                 <div  class="item-price">
-                    <div class="price-cont">
+                    <div class="price-cont" >
                         <span class="act-tag" style="display: none;"></span> 
                         <span>￥</span> <span >{{ele.SalePrice}}</span>&nbsp;
                         <span  class="original-price"></span> 
@@ -32,7 +33,8 @@
                     </div> 
                     <div class="item-comment">评论：{{ele.CommentCount}}</div>
                  </div>
-              </div> 
+              </div>
+              </router-link> 
             <div>
         </div>
     </div>
@@ -51,17 +53,51 @@
             }
         },
         mounted(){
+            console.log(this.$route.params.num)
+            var num = this.$route.params.num   
             var pid = this.$route.params.pid
-            this.$http.get('http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid=2860&filter='+pid+'&sort=0&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true')
+            this.$http.get('http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid='+num+'&filter='+pid+'&sort=0&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true')
             .then(res=>{
                console.log(res.data)
                 this.channerl = res.data.InnerData.GoodsItems
                 console.log(this.channerl)
             }).catch(err=>console.log(err))
+        },
+        methods:{
+            newGoods(){
+                var num = this.$route.params.num                   
+                var pid = this.$route.params.pid
+                this.$http.get('http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid='+num+'&filter='+pid+'&sort=2&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true')
+                .then(res=>{              
+                this.channerl = res.data.InnerData.GoodsItems
+                }).catch(err=>console.log(err))
+            },
+            salesGoods(){
+                var num = this.$route.params.num                   
+                var pid = this.$route.params.pid
+                this.$http.get('http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid='+num+'&filter='+pid+'&sort=1&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true')
+                .then(res=>{              
+                this.channerl = res.data.InnerData.GoodsItems
+                }).catch(err=>console.log(err))
+            },
+            priceGoods(){
+                var num = this.$route.params.num
+                var pid = this.$route.params.pid
+                this.$http.get('http://app.lifevc.com/1.0/v_h5_5.1.2_33/Categories/Category?itemindexid='+num+'&filter='+pid+'&sort=4&o=http%3A%2F%2Fm.lifevc.com&NewCartVersion=true')
+                .then(res=>{              
+                this.channerl = res.data.InnerData.GoodsItems
+                }).catch(err=>console.log(err))
+            }
         }
     }
 </script>
 <style lang=""scoped>
+#Home-Header {
+		background-image: none;
+	}
+#content{
+    padding-top:0.8rem;
+}
 .wrap-shelf-navs {
     width: 100%;
     position: fixed;
@@ -163,7 +199,7 @@
     margin-top: 0.02rem;
     font-size:0.25rem;
 }
-.shelf-item .item-panel .act-tag, .shelf-item .item-panel .act-tag-red, .shelf-item .item-panel .promo-lable {
+.shelf-item .item-panel .act-tag, .shelf-item .item-panel .act-tag-red, .shelf-item .item-panel .pryomo-lable {
     display: inline-block;
     background-color: #c00;
     padding: 1px 3px;
