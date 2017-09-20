@@ -14,7 +14,7 @@
                             <ul  class="life-goodsUl onlyStyle">
                                <li class="item"  v-for="(ele2,index) in listData[index].Children" :data-id="ele.ItemIndexId">
                                     <router-link :to="'/channelsub/'+ele.ItemIndexId+'/'+ele2.ItemIndexId">
-                                    <img  :src="'http://i.lifevccdn.com'+ele2.Icon" > 
+                                    <img  v-lazy="'http://i.lifevccdn.com'+ele2.Icon" > 
                                     <dl >{{ele2.Name}}</dl>
                                     </router-link>
                                </li>
@@ -116,4 +116,9 @@ body{
     padding-bottom: 0.15rem;
     font-size: 0.22rem;
 }
+img[lazy=loading] {
+    width:100%;
+    height: auto;
+    margin: auto;
+    }
 </style>   

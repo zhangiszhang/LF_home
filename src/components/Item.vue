@@ -1,7 +1,7 @@
 <template>
-<div>
+<div v-cloak>
        <v-header titel="商品介绍"></v-header>
-       <v-footer></v-footer>
+      
        <v-content>
 			<div class="item-body">
 				<dl class="item-intro">
@@ -22,9 +22,9 @@
 						<div class="title">{{goods.InnerData.Name}}</div>
 						<p class="des">{{goods.InnerData.Caption}}</p>
 						<div class="price-cntr clearfix" style="text-align: center;">
-							<em class="icon-money-larger activity-price-color">¥</em>
-							<em class="price-money-larger activity-price-color">{{goods.InnerData.ActivityPrice}}</em>
-							<span class="normalprice-wrap">
+							<em class="icon-money-larger activity-price-color" v-show="0">¥</em>
+							<em class="price-money-larger activity-price-color" v-show="0">{{goods.InnerData.ActivityPrice}}</em>
+							<span class="normalprice-wra">
                             <em class="icon-money-smaller normal-price-color">¥</em> 
                             <em class="price-money-smaller normal-price-color">{{goods.InnerData.SalePrice}}</em> 
                             <span class="line"></span></span>
@@ -64,9 +64,9 @@
                         <div class="wrap-spec">
                             <span class="num-tt" style="color: rgb(107, 107, 107);">数量：</span>
                             <span class="wrap-num">
-                                <button  class="des"></button> 
-                                <span  class="ipt-num">1</span>
-                                <button class="inc"></button>
+                                <button  class="des" @click="des"></button> 
+                                <span  class="ipt-num" v-model="text">{{text}}</span>
+                                <button class="inc" @click="inc"></button>
                             </span>
                         </div>
                     </dd>
@@ -100,7 +100,7 @@
                     <div  class="hesmartop"></div>
                     <dd  class="general-info ser-promise">
                         <div  class="huodongcenter" v-for="(ele,index) in serviceIcon">
-                            <img  :src="'http://i.lifevccdn.com'+ele.ImageUrl" >
+                            <img  v-lazy="'http://i.lifevccdn.com'+ele.ImageUrl" >
                             
                         </div>
                         
@@ -141,42 +141,7 @@
                         </div>
                         <div class="detls-comt"></div>
                     </div>
-                    <div title="规格参数" class="Detailsdiv" style="border-top: 0.2rem solid rgb(242, 242, 242); display: none;">
-                        <div class="font-medium Specifications">
-                            品名：不锈钢懒人拖把
-                        </div>
-                        <div class="font-medium Specifications">
-                            拖把材质：奥氏体不锈钢、ABS、PE
-                        </div>
-                        <div class="font-medium Specifications">
-                            拖巾材质：无纺布
-                        </div>
-                        <div class="font-medium Specifications">
-                            拖把尺寸：80-120CM
-                        </div>
-                        <div class="font-medium Specifications">
-                            湿巾尺寸：25*30cm
-                        </div>
-                        <div class="font-medium Specifications">
-                            干巾尺寸：23.5*30cm
-                        </div>
-                        <div class="font-medium Specifications">
-                            拖把包装方式：纸盒包装
-                        </div>
-                        <div class="font-medium Specifications">
-                            拖巾包装方式：防尘袋包装
-                        </div>
-                        <div class="font-medium Specifications app-red" style="border-top: 0.2rem solid rgb(242, 242, 242);">
-                            <div style="line-height: 0.5rem;">客户经理提醒:</div>
-                            <div style="line-height: 0.5rem;">1、清水冲洗，请勿接触带有腐蚀性液体或化学性液体。</div>
-                            <div style="line-height: 0.5rem;">2、避免高温、阳光暴晒。</div>
-                            <div style="line-height: 0.5rem;">3、勿接近火源、热源。</div>
-                            <div style="line-height: 0.5rem;">4、远离婴幼儿。</div>
-                            <div style="line-height: 0.5rem;">5、拖巾请置于阴凉干燥处，远离火源与热源； </div>
-                            <div style="line-height: 0.5rem;">6、拖巾请勿丢入马桶； </div>
-                            <div style="line-height: 0.5rem;">7、拖巾请勿放置于婴幼儿可以触及的地方。</div>
-                        </div>
-                    </div>
+                    
                     <div title="评论" class="Detailsdiv" style="display: none;">
                         <dl>
                             <dd class="font-small CommentContent" style="line-height: 2.2rem;" v-for="(ele,index) in comment">
@@ -192,8 +157,24 @@
                     </div>
                 </div>
 			</div>
-            <button @click="car" style="height:500px; width:100px;">点我</button>
 		</v-content>
+        <footer id="__ft__" class="item-footer" style="position: fixed; bottom: 0px;">
+				<div class="f-service f-kefu">
+					<i class="ico ico-cusser"></i>
+					<span data-v-3520427c="">客服</span>
+				</div>
+				<a href="#/index" class="f-service f-home">
+					<i class="ico ico-home"></i>
+					<span data-v-3520427c="">首页</span>
+				</a>
+				<a href="#/car" class="f-service f-cart">
+					<i class="ico ico-cart-green"></i>
+					
+				</a>
+
+				<button class="f-btn-add"  @click="car">加入购物车</button>
+
+			</footer>
 </div>
 </template>
 <script>
@@ -201,6 +182,7 @@
         name:"item",
         data(){
             return{
+                text:"1",
                 goods:{
                     InnerData:{
                         Name:"",
@@ -241,12 +223,22 @@
                 id:this.$route.params.pid,
                 name:this.goods.InnerData.Name,
                 pric:this.goods.InnerData.ActivityPrice,
-                num:1,
+                num:this.text,
                 image:'http://i.lifevccdn.com'+this.banner[0].ImageUrl
             }
             	
              this.$store.commit("getData",obj)
              console.log(this.$store.state.arr)
+            },
+            des(){
+                if(this.text>1){
+                this.text--;                 
+                }else{
+                    this.text=1
+                }
+            },
+            inc(){
+               this.text++;
             }
         }
     }
@@ -323,7 +315,7 @@ img { width:100% !important}
     font-size: 0.35rem;
     margin-left: 2px;
 }
-.normalprice-wrap{
+.normalprice-wrap,.normalprice-wra{
     position: relative;
     display: inline-block;
     height: 100%;
@@ -508,7 +500,7 @@ table {
     line-height: .54rem;
 }
 .item-body .spec-amount button.des{
-    background: #eee url(../assets/fonts/1.png) no-repeat 50%;
+    background: #eee url(../assets/fonts/0.png) no-repeat 50%;
     background-size: .28rem .28rem;
 }
 .item-body .spec-amount button.inc{
@@ -747,5 +739,118 @@ div.Detailsdiv img {
 }
 .sup {
     color: silver;
+}
+img[lazy=loading] {
+    width:100%;
+    height: auto;
+    margin: auto;
+}
+.item-footer {
+    background-color:#fff;
+    width:99%;
+    padding: 4px 0;
+    z-index: 1005;
+    height: 40px;
+    border-top: 1px solid #ddd;
+}
+.item-footer .f-service {
+    width: 13%;
+    height: 4rem;
+    overflow: hidden;
+    float: left;
+    line-height: .1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.item-footer .f-service {
+    height: 40px;
+    line-height: 1px;
+    font-size: 11px;
+}
+.item-footer .f-service.f-home, .item-footer .f-service.f-kefu {
+    position: relative;
+    top: -2px;
+}
+.item-footer .f-service .ico {
+    width: 100%;
+    height: 3rem;
+    display: inline-block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    margin-bottom: .4rem;
+}
+.item-footer .f-service .ico-cusser {
+    margin-top: -.2rem;
+    background-image: url(../assets/fonts/index.png);
+}
+.item-footer .f-service .ico{
+    height: 30px;
+    margin-bottom: 4px;
+}
+.ico-home, .item-footer .f-service .ico-cusser {
+    margin-top: -2px;
+}
+.item-footer .f-service.f-home, .item-footer .f-service.f-kefu{
+    position: relative;
+    top: -2px;
+}
+.ico-home{
+    margin-top: -.2rem;
+    background-image: url(../assets/fonts/my.png);
+}
+.item-footer .f-service.f-cart {
+    width: 20%;
+    height: 3.8rem;
+    position: relative;
+    border: .1rem solid #009d42;
+    border-radius: .5rem;
+    margin-right: 3%;
+    margin-left: 2%;
+}
+.item-footer .f-service {
+    height: 40px;
+    line-height: 1px;
+    font-size: 11px;
+}
+.item-footer .f-service.f-cart {
+    height: 38px;
+    border: 1px solid #009d42;
+    border-radius: 5px;
+}
+.item-footer .f-service .ico-cart-green {
+    width: 100%;
+    float: left;
+    height: 100%;
+    background-size: 50%;
+    background-image: url(../assets/fonts/car.png);
+}
+.item-footer .f-service .ico-cart-green{
+    margin-bottom: 4px;
+    height: 40px!important;
+    background-size: auto 50%;
+}
+.item-footer .f-btn-add {
+    width: 45%;
+    height: 4rem;
+    overflow: hidden;
+    float: left;
+    background-color: #009d42;
+    border: 0;
+    text-align: center;
+    font-size: 1.7rem;
+    color: #fff;
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: .5rem;
+}
+.item-footer .f-btn-add {
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.ico-home, .item-footer .f-service .ico-cusser{
+    margin-top: -2px;
 }
 </style>   
