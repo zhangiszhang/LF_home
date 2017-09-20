@@ -7,10 +7,6 @@ import Sig from '@/components/Sign'
 import Channelsub from '@/components/Channelsub'
 import Item from '@/components/Item'
 import Reg from '@/components/Reg'
-import Car from '@/components/Car'
-import Channelsub from '@/components/Channelsub' 
-import Item from '@/components/Item' 
-import Reg from '@/components/Reg'
 import Car from '@/components/Car' 
 
 Vue.use(Router)

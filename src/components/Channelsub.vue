@@ -46,7 +46,7 @@
 </template>
 <script>
     export default{
-        name:"channelsub",
+        name:"channelsub1",
         data(){
             return{
                 channerl:[]
