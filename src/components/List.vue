@@ -47,7 +47,7 @@
         }
     }
 </script>
-<style >
+<style scoped="scoped">
 #Home-Header {
 		background-image: none;
 	}

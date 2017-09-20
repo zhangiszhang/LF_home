@@ -1,6 +1,6 @@
 <template>
         <div>
-            <v-header titel="首页" style={}>
+            <v-header titel="" style={}>
                 <a hreaf="javascript:;" slot="left" ></a>
                 <router-link to="/list" slot="right" class="iconfont icon-sousuo-liebiao"></router-link>
             </v-header>
