@@ -19,7 +19,7 @@
 						<li v-for="(ele,index) in goodsarr " :key="index" :data-goodid="ele.id">
 							<section class="se1">√</section>
 							<section class="se2">
-								<img src="" />
+								<img :src="ele.image" />
 							</section>
 							<section class="se3">
 								<p>{{ele.name}}</p>
@@ -377,7 +377,7 @@ body,
 						font-size: 0.26rem;
 						line-height: 0.4rem;
 						overflow: hidden;
-						margin-left: 0.2rem;
+						margin-left: 0.5rem;
 					}
 					.xiugai {
 						position: absolute;
@@ -496,4 +496,8 @@ body,
 			}
 		}
 	}
+.car_cont_two ul li section {
+   
+    width: 1.4rem;
+}
 </style>

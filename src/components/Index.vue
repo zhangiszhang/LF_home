@@ -8,7 +8,7 @@
             </v-nav>
             <div class="div-swiper">
 				<mt-swipe :auto="6000" class="index-swiper">
-					<mt-swipe-item v-for="(ele,index) in bannerarr">
+					<mt-swipe-item v-for="(ele,index) in bannerarr" :key="index">
                             <img  style="width:100%" :src="'http://i.lifevccdn.com/'+ele.ImageUrl"/>
                     </mt-swipe-item>
 				</mt-swipe>

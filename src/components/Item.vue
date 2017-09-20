@@ -241,8 +241,10 @@
                 id:this.$route.params.pid,
                 name:this.goods.InnerData.Name,
                 pric:this.goods.InnerData.ActivityPrice,
-                num:1
+                num:1,
+                image:'http://i.lifevccdn.com'+this.banner[0].ImageUrl
             }
+            	
              this.$store.commit("getData",obj)
              console.log(this.$store.state.arr)
             }
